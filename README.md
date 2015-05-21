@@ -1,6 +1,8 @@
 # Ansible Role: PHP FPM
 
+[![Ansible Galaxy](http://img.shields.io/badge/galaxy-novuso.php--fpm-000000.svg)](https://galaxy.ansible.com/list#/roles/3863)
 [![MIT License](http://img.shields.io/badge/license-MIT-003399.svg)](http://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/novuso/ansible-role-php-fpm.svg)](https://travis-ci.org/novuso/ansible-role-php-fpm)
 
 An Ansible role that manages PHP FPM on Ubuntu 14.04
 
