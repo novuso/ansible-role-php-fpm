@@ -1,0 +1,21 @@
+---
+- name: "php-fpm installed"
+  sudo: yes
+  apt:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items: php_fpm_packages
+  when: item.name is defined
+
+- include: "config.yml"
+- include: "phpini.yml"
+- include: "opcache.yml"
+
+- name: "php-fpm enabled"
+  sudo: yes
+  service:
+    name: "php5-fpm"
+    state: started
+    enabled: yes

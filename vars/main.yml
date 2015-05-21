@@ -1,0 +1,4 @@
+---
+php_fpm_server_services:
+  nginx: "nginx"
+  apache: "apache2"

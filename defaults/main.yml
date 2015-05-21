@@ -1,0 +1,41 @@
+---
+# php_fpm_packages
+# - name: "php5-fpm"                             #required
+#   state: present                               #default
+php_fpm_packages:
+- name: "php5-fpm"
+php_fpm_server: "nginx"
+php_fpm_user: "www-data"
+php_fpm_group: "www-data"
+php_fpm_listen: "127.0.0.1:9000"
+php_fpm_short_open_tag: "Off"
+php_fpm_expose_php: "Off"
+php_fpm_max_execution_time: "30"
+php_fpm_max_input_time: "60"
+php_fpm_memory_limit: "512M"
+php_fpm_error_reporting: "E_ALL & ~E_DEPRECATED & ~E_STRICT"
+php_fpm_display_errors: "Off"
+php_fpm_display_startup_errors: "Off"
+php_fpm_track_errors: "Off"
+php_fpm_html_errors: "On"
+php_fpm_variables_order: "GPCS"
+php_fpm_request_order: "GP"
+php_fpm_post_max_size: "8M"
+php_fpm_default_mimetype: "text/html"
+php_fpm_default_charset: "UTF-8"
+php_fpm_upload_max_filesize: "10M"
+php_fpm_max_file_uploads: "3"
+php_fpm_date_timezone: "UTC"
+php_fpm_include_path: ".:/usr/share/php"
+php_fpm_enable_includes: true
+php_fpm_opcache_enable: "1"
+php_fpm_opcache_memory_consumption: "64"
+php_fpm_opcache_interned_strings_buffer: "16"
+php_fpm_opcache_max_accelerated_files: "4000"
+php_fpm_opcache_validate_timestamps: "1"
+php_fpm_opcache_revalidate_freq: "0"
+php_fpm_opcache_fast_shutdown: "1"
+# php_fpm_extra_settings
+# - setting: "xdebug.max_nesting_level=250"      #required
+#   state: present                               #default
+php_fpm_extra_settings: []

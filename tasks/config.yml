@@ -1,0 +1,45 @@
+---
+- name: "php-fpm listen"
+  sudo: yes
+  lineinfile:
+    dest: "/etc/php5/fpm/pool.d/www.conf"
+    regexp: "^;?listen ="
+    line: "listen = {{ php_fpm_listen }}"
+    state: present
+  notify: "php-fpm restart"
+
+- name: "php-fpm user"
+  sudo: yes
+  lineinfile:
+    dest: "/etc/php5/fpm/pool.d/www.conf"
+    regexp: "^;?user ="
+    line: "user = {{ php_fpm_user }}"
+    state: present
+  notify: "php-fpm restart"
+
+- name: "php-fpm group"
+  sudo: yes
+  lineinfile:
+    dest: "/etc/php5/fpm/pool.d/www.conf"
+    regexp: "^;?group ="
+    line: "group = {{ php_fpm_group }}"
+    state: present
+  notify: "php-fpm restart"
+
+- name: "php-fpm listen owner"
+  sudo: yes
+  lineinfile:
+    dest: "/etc/php5/fpm/pool.d/www.conf"
+    regexp: "^;?listen.owner ="
+    line: "listen.owner = {{ php_fpm_user }}"
+    state: present
+  notify: "php-fpm restart"
+
+- name: "php-fpm listen group"
+  sudo: yes
+  lineinfile:
+    dest: "/etc/php5/fpm/pool.d/www.conf"
+    regexp: "^;?listen.group ="
+    line: "listen.group = {{ php_fpm_group }}"
+    state: present
+  notify: "php-fpm restart"
