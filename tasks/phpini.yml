@@ -1,6 +1,6 @@
 ---
 - name: "short open tag"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?short_open_tag ="
@@ -9,7 +9,7 @@
   notify: "php-fpm restart"
 
 - name: "expose php"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?expose_php ="
@@ -18,7 +18,7 @@
   notify: "php-fpm restart"
 
 - name: "max execution time"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?max_execution_time ="
@@ -27,7 +27,7 @@
   notify: "php-fpm restart"
 
 - name: "max input time"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?max_input_time ="
@@ -36,7 +36,7 @@
   notify: "php-fpm restart"
 
 - name: "memory limit"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?memory_limit ="
@@ -45,7 +45,7 @@
   notify: "php-fpm restart"
 
 - name: "error reporting"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?error_reporting ="
@@ -54,7 +54,7 @@
   notify: "php-fpm restart"
 
 - name: "display errors"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?display_errors ="
@@ -63,7 +63,7 @@
   notify: "php-fpm restart"
 
 - name: "display startup errors"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?display_startup_errors ="
@@ -72,7 +72,7 @@
   notify: "php-fpm restart"
 
 - name: "track errors"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?track_errors ="
@@ -81,7 +81,7 @@
   notify: "php-fpm restart"
 
 - name: "html errors"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?html_errors ="
@@ -90,7 +90,7 @@
   notify: "php-fpm restart"
 
 - name: "variables order"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?variables_order ="
@@ -99,7 +99,7 @@
   notify: "php-fpm restart"
 
 - name: "request order"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?request_order ="
@@ -108,7 +108,7 @@
   notify: "php-fpm restart"
 
 - name: "post max size"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?post_max_size ="
@@ -117,7 +117,7 @@
   notify: "php-fpm restart"
 
 - name: "default mimetype"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?default_mimetype ="
@@ -126,7 +126,7 @@
   notify: "php-fpm restart"
 
 - name: "default charset"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?default_charset ="
@@ -135,7 +135,7 @@
   notify: "php-fpm restart"
 
 - name: "upload max filesize"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?upload_max_filesize ="
@@ -144,7 +144,7 @@
   notify: "php-fpm restart"
 
 - name: "max file uploads"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?max_file_uploads ="
@@ -153,7 +153,7 @@
   notify: "php-fpm restart"
 
 - name: "php default timezone"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?date.timezone ="
@@ -162,7 +162,7 @@
   notify: "php-fpm restart"
 
 - name: "default include path"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: '^;?include_path = "\.:/'
@@ -172,11 +172,11 @@
   notify: "php-fpm restart"
 
 - name: "extra settings"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     line: "{{ item.setting }}"
     state: "{{ item.state | default('present') }}"
-  with_items: php_fpm_extra_settings
+  with_items: "{{ php_fpm_extra_settings }}"
   when: item.setting is defined
   notify: "php-fpm restart"

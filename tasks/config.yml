@@ -1,6 +1,6 @@
 ---
 - name: "php-fpm listen"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/pool.d/www.conf"
     regexp: "^;?listen ="
@@ -9,7 +9,7 @@
   notify: "php-fpm restart"
 
 - name: "php-fpm user"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/pool.d/www.conf"
     regexp: "^;?user ="
@@ -18,7 +18,7 @@
   notify: "php-fpm restart"
 
 - name: "php-fpm group"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/pool.d/www.conf"
     regexp: "^;?group ="
@@ -27,7 +27,7 @@
   notify: "php-fpm restart"
 
 - name: "php-fpm listen owner"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/pool.d/www.conf"
     regexp: "^;?listen.owner ="
@@ -36,7 +36,7 @@
   notify: "php-fpm restart"
 
 - name: "php-fpm listen group"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/pool.d/www.conf"
     regexp: "^;?listen.group ="
