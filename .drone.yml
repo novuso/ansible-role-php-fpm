@@ -1,18 +1,10 @@
 build:
    image: python:2.7
-   
-before_install:
-   commands:
+   commands: 
       - sudo apt-get update -qq
-
-install:
-   commands:
       - pip install ansible
       - cd tests
       - ansible-galaxy install novuso.php-ext
-
-script:
-   commands:
       - "ansible-playbook playbook.yml --syntax-check"
       - "ansible-playbook playbook.yml --connection=local"
       - >
