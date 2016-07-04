@@ -1,6 +1,6 @@
 ---
 - name: "opcache enabled"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?opcache.enable="
@@ -9,7 +9,7 @@
   notify: "php-fpm restart"
 
 - name: "opcache memory consumption"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?opcache.memory_consumption="
@@ -18,7 +18,7 @@
   notify: "php-fpm restart"
 
 - name: "opcache interned strings buffer"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?opcache.interned_strings_buffer="
@@ -27,7 +27,7 @@
   notify: "php-fpm restart"
 
 - name: "opcache max accelerated files"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?opcache.max_accelerated_files="
@@ -36,7 +36,7 @@
   notify: "php-fpm restart"
 
 - name: "opcache validate timestamps"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?opcache.validate_timestamps="
@@ -45,7 +45,7 @@
   notify: "php-fpm restart"
 
 - name: "opcache revalidate frequency"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?opcache.revalidate_freq="
@@ -54,7 +54,7 @@
   notify: "php-fpm restart"
 
 - name: "opcache fast shutdown"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "/etc/php5/fpm/php.ini"
     regexp: "^;?opcache.fast_shutdown="

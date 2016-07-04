@@ -1,10 +1,4 @@
 ---
 - name: "php-fpm restart"
-  sudo: yes
-  command: "service php5-fpm restart"
-
-- name: "php-fpm server restart"
-  sudo: yes
-  service:
-    name: "{{ php_fpm_server_services[php_fpm_server] }}"
-    state: restarted
+  become: yes
+  service: name=php5-fpm state=restarted
