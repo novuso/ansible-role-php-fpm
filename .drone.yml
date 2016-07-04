@@ -1,4 +1,19 @@
 build:
-   image: python
+   image: python:2.7
+   
+   before_install:
+      - sudo apt-get update -qq
+
+   install:
+      - pip install ansible
+      - cd tests
+      - ansible-galaxy install novuso.php-ext
+
    script:
-      - echo hello world
+      - "ansible-playbook playbook.yml --syntax-check"
+      - "ansible-playbook playbook.yml --connection=local"
+      - >
+        ansible-playbook playbook.yml --connection=local
+        | grep -q 'changed=0.*failed=0'
+        && (echo 'Idempotence test: pass' && exit 0)
+        || (echo 'Idempotence test: fail' && exit 1)
