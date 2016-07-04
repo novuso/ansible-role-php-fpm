@@ -1,3 +1,4 @@
-image: dockerfile/python
-script:
-- echo hello world
+build:
+   image: dockerfile/python
+   script:
+      - echo hello world
