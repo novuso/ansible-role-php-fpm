@@ -1,8 +1,7 @@
 build:
    image: python:2.7
    commands: 
-      - apt-get install sudo
-      - sudo apt-get update -qq
+      - apt-get update -qq
       - pip install ansible
       - cd tests
       - ansible-galaxy install novuso.php-ext
